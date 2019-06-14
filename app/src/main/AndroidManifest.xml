@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+          package="inc.brody.example">
+=======
+          xmlns:tools="http://schemas.android.com/tools" package="inc.brody.telegramaudio">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+>>>>>>> f8176922abd4bda77c140b38d397ba4350a22429
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+<<<<<<< HEAD
+            android:theme="@style/AppTheme">
+=======
+            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning">
+>>>>>>> f8176922abd4bda77c140b38d397ba4350a22429
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

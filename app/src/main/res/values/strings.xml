@@ -1,0 +1,7 @@
+<resources>
+<<<<<<< HEAD
+    <string name="app_name">TApiExample</string>
+=======
+    <string name="app_name">TelegramAudio</string>
+>>>>>>> f8176922abd4bda77c140b38d397ba4350a22429
+</resources>
