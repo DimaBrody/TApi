@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import inc.brody.tapi.TApi
 import inc.brody.tapi.data.appdata.TConstants
 import inc.brody.tapi.requests.TGetChats
+import inc.brody.tapi.requests.TSendMessage
 import inc.brody.tapi.utils.Session
 import kotlinx.android.synthetic.main.activity_main.*
 import org.drinkless.td.libcore.telegram.TdApi
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity() {
                     //If your auth is successful, you receive AUTH_OK and then you can
                     //fetch whatever you want.
                     //Here you can go to your App's main screen
-                    Log.d(TAG, Session.user.username + "!!!")
-
                     TGetChats {chats->
                         if(chats is TdApi.Chats){
                             Log.d(TAG,chats.chatIds.size.toString())
@@ -57,7 +56,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 }
