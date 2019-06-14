@@ -9,6 +9,5 @@ object TConstants {
     const val AUTH_LOGGING_OUT = 0x0d
     const val AUTH_OK = 0x0e
     const val AUTH_UNKNOWN = 0x0e
-
-    const val UPDATE_USER = 0xaa
+    const val AUTH_ERROR = 0x0abcdef
 }

@@ -37,7 +37,7 @@ class TApi {
             field = value
         }
 
-    private var _signedState: Int = -1
+    /*private var _signedState: Int = -1
         set(value) {
             signedInstance.value = value
             signedInstance.listener?.onChange()
@@ -46,13 +46,15 @@ class TApi {
 
     private val signedInstance = State()
 
+
+    val signedState: State
+        get() = signedInstance*/
+
     private val stateInstance = State()
 
     val authState: State
         get() = stateInstance
 
-    val signedState: State
-        get() = signedInstance
 
     fun sendCodeOnPhone(phone: String) {
         Session.myPhone = phone
@@ -74,31 +76,24 @@ class TApi {
     fun logout() = Session.confirmLogout()
 
     fun initInternalProcesses() {
-        TGetCurrentState {
-            when (it) {
-                is TdApi.Updates ->
-                    _authState = Session.checkAuthState(
-                        (it.updates[0]) as TdApi.UpdateAuthorizationState
-                    )
-                is TdApi.UpdateAuthorizationState -> {
-                    _authState = Session.checkAuthState(it)
-                }
-                is TdApi.UpdateConnectionState -> {
-                    if (it.state.constructor == TdApi.UpdateUser.CONSTRUCTOR) {
-                        _signedState = TConstants.UPDATE_USER
+        TGetCurrentState (
+            onError = {
+                authState.error = it
+                _authState = TConstants.AUTH_ERROR
+        },
+            onSuccess = {
+                when (it) {
+                    is TdApi.Updates ->
+                        _authState = Session.checkAuthState(
+                            (it.updates[0]) as TdApi.UpdateAuthorizationState
+                        )
+                    is TdApi.UpdateAuthorizationState -> {
+                        _authState = Session.checkAuthState(it)
+                    }
+                    else -> {
+                        // Log.d("TApiTEST", it.toString())
                     }
                 }
-                is TdApi.UpdateUser -> {
-                    if (it.user.username == Session.user.username)
-                        _signedState = TConstants.UPDATE_USER
-                }
-                is TdApi.UpdateChatOrder -> {
-
-                }
-                else -> {
-                    Log.d("TApiTEST", it.toString())
-                }
-            }
-        }
+            })
     }
 }

@@ -1,24 +1,25 @@
 package inc.brody.tapi.requests
 
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TViewMessages (
     chatId: Long,
     messageIds: LongArray,
     forceRead: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ViewMessages>(
-    TdApi.ViewMessages(chatId,messageIds,forceRead),error,callback)
+    TdApi.ViewMessages(chatId,messageIds,forceRead),onError,onSuccess)
 
 class TUploadStickerFile (
     userId: Int,
     pngSticker: TdApi.InputFile,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ViewTrendingStickerSets>(
-    TdApi.UploadStickerFile(userId,pngSticker),error,callback)
+    TdApi.UploadStickerFile(userId,pngSticker),onError,onSuccess)
 
 
 class TAddLocalMessage(
@@ -27,102 +28,102 @@ class TAddLocalMessage(
     replyToMessageId: Long,
     disableNotifications: Boolean,
     inputMessageContent: TdApi.InputMessageContent,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddLocalMessage>(
-    TdApi.AddLocalMessage(chatId,senderUserId,replyToMessageId,disableNotifications,inputMessageContent),error,callback)
+    TdApi.AddLocalMessage(chatId,senderUserId,replyToMessageId,disableNotifications,inputMessageContent),onError,onSuccess)
 
 class TAddLogMessage (
     verbosityLevel: Int,
     text: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddLogMessage>(
-    TdApi.AddLogMessage(verbosityLevel,text),error,callback)
+    TdApi.AddLogMessage(verbosityLevel,text),onError,onSuccess)
 
 class TToggleSupergroupSignMessages (
     supergroupId: Int,
     signMessages: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleSupergroupSignMessages>(
-    TdApi.ToggleSupergroupSignMessages(supergroupId,signMessages),error,callback)
+    TdApi.ToggleSupergroupSignMessages(supergroupId,signMessages),onError,onSuccess)
 
 
 class TToggleChatIsPinned (
     chatId: Long,
     isPinned: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleChatIsPinned>(
-    TdApi.ToggleChatIsPinned(chatId,isPinned),error,callback)
+    TdApi.ToggleChatIsPinned(chatId,isPinned),onError,onSuccess)
 
 
 class TDeleteChatMessagesFromUser (
     chatId: Long,
     userId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.DeleteChatMessagesFromUser>(
-    TdApi.DeleteChatMessagesFromUser(chatId,userId),error,callback)
+    TdApi.DeleteChatMessagesFromUser(chatId,userId),onError,onSuccess)
 
 
 class TDeleteMessages (
     chatId: Long,
     messageIds: LongArray,
     revoke: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.DeleteMessages>(
-    TdApi.DeleteMessages(chatId,messageIds,revoke),error,callback)
+    TdApi.DeleteMessages(chatId,messageIds,revoke),onError,onSuccess)
 
 
 class TEditInlineMessageCaption (
     inlineMessageId: String,
     replyMarkup: TdApi.ReplyMarkup,
     caption: TdApi.FormattedText,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditInlineMessageCaption>(
-    TdApi.EditInlineMessageCaption(inlineMessageId,replyMarkup,caption),error,callback)
+    TdApi.EditInlineMessageCaption(inlineMessageId,replyMarkup,caption),onError,onSuccess)
 
 
 class TEditInlineMessageLiveLocation (
     inlineMessageId: String,
     replyMarkup: TdApi.ReplyMarkup,
     location: TdApi.Location,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditInlineMessageLiveLocation>(
-    TdApi.EditInlineMessageLiveLocation(inlineMessageId,replyMarkup,location),error,callback)
+    TdApi.EditInlineMessageLiveLocation(inlineMessageId,replyMarkup,location),onError,onSuccess)
 
 class TEditInlineMessageMedia (
     inlineMessageId: String,
     replyMarkup: TdApi.ReplyMarkup,
     inputMessageContent: TdApi.InputMessageContent,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditInlineMessageMedia>(
-    TdApi.EditInlineMessageMedia(inlineMessageId,replyMarkup,inputMessageContent),error,callback)
+    TdApi.EditInlineMessageMedia(inlineMessageId,replyMarkup,inputMessageContent),onError,onSuccess)
 
 
 class TEditInlineMessageReplyMarkup (
     inlineMessageId: String,
     replyMarkup: TdApi.ReplyMarkup,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditInlineMessageReplyMarkup>(
-    TdApi.EditInlineMessageReplyMarkup(inlineMessageId,replyMarkup),error,callback)
+    TdApi.EditInlineMessageReplyMarkup(inlineMessageId,replyMarkup),onError,onSuccess)
 
 
 class TEditInlineMessageText (
     inlineMessageId: String,
     replyMarkup: TdApi.ReplyMarkup,
     inputMessageContent: TdApi.InputMessageContent,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditInlineMessageText>(
-    TdApi.EditInlineMessageText(inlineMessageId,replyMarkup,inputMessageContent),error,callback)
+    TdApi.EditInlineMessageText(inlineMessageId,replyMarkup,inputMessageContent),onError,onSuccess)
 
 
 class TEditMessageCaption (
@@ -130,10 +131,10 @@ class TEditMessageCaption (
     messageId: Long,
     replyMarkup: TdApi.ReplyMarkup,
     caption: TdApi.FormattedText,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditMessageCaption>(
-    TdApi.EditMessageCaption(chatId,messageId,replyMarkup,caption),error,callback)
+    TdApi.EditMessageCaption(chatId,messageId,replyMarkup,caption),onError,onSuccess)
 
 
 class TEditMessageLiveLocation (
@@ -141,10 +142,10 @@ class TEditMessageLiveLocation (
     messageId: Long,
     replyMarkup: TdApi.ReplyMarkup,
     location: TdApi.Location,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditMessageLiveLocation>(
-    TdApi.EditMessageLiveLocation(chatId,messageId,replyMarkup,location),error,callback)
+    TdApi.EditMessageLiveLocation(chatId,messageId,replyMarkup,location),onError,onSuccess)
 
 
 class TEditMessageMedia (
@@ -152,30 +153,30 @@ class TEditMessageMedia (
     messageId: Long,
     replyMarkup: TdApi.ReplyMarkup,
     inputMessageContent: TdApi.InputMessageContent,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditMessageMedia>(
-    TdApi.EditMessageMedia(chatId,messageId,replyMarkup,inputMessageContent),error,callback)
+    TdApi.EditMessageMedia(chatId,messageId,replyMarkup,inputMessageContent),onError,onSuccess)
 
 
 class TEditMessageReplyMarkup(
     chatId: Long,
     messageId: Long,
     replyMarkup: TdApi.ReplyMarkup,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditMessageReplyMarkup>(
-    TdApi.EditMessageReplyMarkup(chatId,messageId,replyMarkup),error,callback)
+    TdApi.EditMessageReplyMarkup(chatId,messageId,replyMarkup),onError,onSuccess)
 
 class TEditMessageText (
     chatId: Long,
     messageId: Long,
     replyMarkup: TdApi.ReplyMarkup,
     inputMessageContent: TdApi.InputMessageContent,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditMessageText>(
-    TdApi.EditMessageText(chatId,messageId,replyMarkup,inputMessageContent),error,callback)
+    TdApi.EditMessageText(chatId,messageId,replyMarkup,inputMessageContent),onError,onSuccess)
 
 class TForwardMessages (
     chatId: Long,
@@ -184,92 +185,92 @@ class TForwardMessages (
     disableNotifications: Boolean,
     fromBackground: Boolean,
     asAlbum: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ForwardMessages>(
-    TdApi.ForwardMessages(chatId,fromChatId,messageIds,disableNotifications,fromBackground,asAlbum),error,callback)
+    TdApi.ForwardMessages(chatId,fromChatId,messageIds,disableNotifications,fromBackground,asAlbum),onError,onSuccess)
 
 class TGetActiveLiveLocationMessages (
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetActiveLiveLocationMessages>(
-    TdApi.GetActiveLiveLocationMessages(),error,callback)
+    TdApi.GetActiveLiveLocationMessages(),onError,onSuccess)
 
 class TGetMessage (
     chatId: Long,
     messageId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetMessage>(
-    TdApi.GetMessage(chatId,messageId),error,callback)
+    TdApi.GetMessage(chatId,messageId),onError,onSuccess)
 
 class TGetMessageLink (
     chatId: Long,
     messageId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetMessageLink>(
-    TdApi.GetMessageLink(chatId,messageId),error,callback)
+    TdApi.GetMessageLink(chatId,messageId),onError,onSuccess)
 
 class TGetMessageLocally (
     chatId: Long,
     messageId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetMessageLocally>(
-    TdApi.GetMessageLocally(chatId,messageId),error,callback)
+    TdApi.GetMessageLocally(chatId,messageId),onError,onSuccess)
 
 class TGetMessages (
     chatId: Long,
     messageIds: LongArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetMessages>(
-    TdApi.GetMessages(chatId,messageIds),error,callback)
+    TdApi.GetMessages(chatId,messageIds),onError,onSuccess)
 
 class TGetPublicMessageLink (
     chatId: Long,
     messageId: Long,
     forAlbum: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetPublicMessageLink>(
-    TdApi.GetPublicMessageLink(chatId,messageId,forAlbum),error,callback)
+    TdApi.GetPublicMessageLink(chatId,messageId,forAlbum),onError,onSuccess)
 
 class TGetRepliedMessage (
     chatId: Long,
     messageId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetRepliedMessage>(
-    TdApi.GetRepliedMessage(chatId,messageId),error,callback)
+    TdApi.GetRepliedMessage(chatId,messageId),onError,onSuccess)
 
 class TOpenMessageContent (
     chatId: Long,
     messageId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.OpenMessageContent>(
-    TdApi.OpenMessageContent(chatId,messageId),error,callback)
+    TdApi.OpenMessageContent(chatId,messageId),onError,onSuccess)
 
 
 class TPinChatMessage (
     chatId: Long,
     messageId: Long,
     disableNotifications: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.PinChatMessage>(
-    TdApi.PinChatMessage(chatId,messageId,disableNotifications),error,callback)
+    TdApi.PinChatMessage(chatId,messageId,disableNotifications),onError,onSuccess)
 
 class TSearchCallMessages (
     fromMessageId: Long,
     limit: Int,
     onlyMissed: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SearchCallMessages>(
-    TdApi.SearchCallMessages(fromMessageId,limit,onlyMissed),error,callback)
+    TdApi.SearchCallMessages(fromMessageId,limit,onlyMissed),onError,onSuccess)
 
 class TSearchMessages (
     query: String,
@@ -277,10 +278,10 @@ class TSearchMessages (
     offsetChatId: Long,
     offsetMessageId: Long,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SearchMessages>(
-    TdApi.SearchMessages(query,offsetDate,offsetChatId,offsetMessageId,limit),error,callback)
+    TdApi.SearchMessages(query,offsetDate,offsetChatId,offsetMessageId,limit),onError,onSuccess)
 
 class TSearchSecretMessages (
     chatId: Long,
@@ -288,19 +289,19 @@ class TSearchSecretMessages (
     fromSearchId: Long,
     limit: Int,
     filter: TdApi.SearchMessagesFilter,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SearchSecretMessages>(
-    TdApi.SearchSecretMessages(chatId,query,fromSearchId,limit,filter),error,callback)
+    TdApi.SearchSecretMessages(chatId,query,fromSearchId,limit,filter),onError,onSuccess)
 
 class TSendBotStartMessage (
     botUserId: Int,
     chatId: Long,
     parameter: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendBotStartMessage>(
-    TdApi.SendBotStartMessage(botUserId,chatId,parameter),error,callback)
+    TdApi.SendBotStartMessage(botUserId,chatId,parameter),onError,onSuccess)
 
 class TSendInlineQueryResultMessage (
     chatId: Long,
@@ -310,11 +311,11 @@ class TSendInlineQueryResultMessage (
     queryId: Long,
     resultId: String,
     hideViaBot: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendInlineQueryResultMessage>(
     TdApi.SendInlineQueryResultMessage(chatId,replyToMessageId,disableNotification,
-        fromBackground,queryId,resultId,hideViaBot),error,callback)
+        fromBackground,queryId,resultId,hideViaBot),onError,onSuccess)
 
 class TSendMessage (
     chatId: Long,
@@ -323,11 +324,11 @@ class TSendMessage (
     fromBackground: Boolean,
     replyMarkup: TdApi.ReplyMarkup,
     inputMessageContent: TdApi.InputMessageContent,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendMessage>(
     TdApi.SendMessage(chatId,replyToMessageId,disableNotification,fromBackground,
-        replyMarkup,inputMessageContent),error,callback)
+        replyMarkup,inputMessageContent),onError,onSuccess)
 
 class TSendMessageAlbum (
     chatId: Long,
@@ -335,11 +336,11 @@ class TSendMessageAlbum (
     disableNotification: Boolean,
     fromBackground: Boolean,
     inputMessageContent: Array<TdApi.InputMessageContent>,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendMessageAlbum>(
     TdApi.SendMessageAlbum(chatId,replyToMessageId,disableNotification,fromBackground,
-        inputMessageContent),error,callback)
+        inputMessageContent),onError,onSuccess)
 
 
 

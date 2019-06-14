@@ -1,11 +1,12 @@
 package inc.brody.tapi.requests
 
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TAddSavedAnimation (
     animation: TdApi.InputFile,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddSavedAnimation>(
-    TdApi.AddSavedAnimation(animation),error,callback)
+    TdApi.AddSavedAnimation(animation),onError,onSuccess)

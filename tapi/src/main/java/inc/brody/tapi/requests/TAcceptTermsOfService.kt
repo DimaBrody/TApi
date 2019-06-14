@@ -1,11 +1,12 @@
 package inc.brody.tapi.requests
 
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TAcceptTermsOfService(
     termsOfService: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AcceptTermsOfService>(
-    TdApi.AcceptTermsOfService(termsOfService),error,callback)
+    TdApi.AcceptTermsOfService(termsOfService),onError,onSuccess)

@@ -46,23 +46,22 @@ open class TelegramApiRequest<F>(
         canceled = true
     }
 
-    fun setCallbackDef(callback: Callback) : TelegramApiRequest<F>{
-        this.callback = callback
+    fun setCallbackDef(onSuccess: Callback) : TelegramApiRequest<F>{
+        this.callback = onSuccess
         return this
     }
 
     inline fun setCallback(
-        crossinline error: (ErrorResponse) -> Unit,
-        crossinline callback: (TdApi.Object?) -> Unit
+        crossinline onError: (TelegramErrorResponse) -> Unit,
+        crossinline onSuccess: (TdApi.Object?) -> Unit
     ) : TelegramApiRequest<F> {
         this.callback = object : SimpleCallback(){
-
-            override fun onError(errorResponse: ErrorResponse) {
-                error(errorResponse)
+            override fun onError(errorResponse: TelegramErrorResponse) {
+                onError(errorResponse)
             }
 
             override fun onSuccess(`object`: TdApi.Object?) {
-                callback(`object`)
+                onSuccess(`object`)
             }
 
         }

@@ -2,13 +2,14 @@ package inc.brody.tapi.requests
 
 import android.content.Context
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TSetTdlibParameters(
     context: Context,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetTdlibParameters>(TdApi.SetTdlibParameters(createParameters(context)),error,callback){
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetTdlibParameters>(TdApi.SetTdlibParameters(createParameters(context)),onError,onSuccess){
     companion object {
         private fun createParameters(context: Context): TdApi.TdlibParameters {
             val tdlibParameters = TdApi.TdlibParameters()

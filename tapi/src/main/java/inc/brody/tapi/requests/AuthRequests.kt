@@ -2,55 +2,56 @@ package inc.brody.tapi.requests
 
 import inc.brody.tapi.utils.Session
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TChangePhoneNumber (
     phoneNumber: String,
     allowFlashCall: Boolean,
     isCurrentPhoneNumber: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ChangePhoneNumber>(
-    TdApi.ChangePhoneNumber(phoneNumber,allowFlashCall,isCurrentPhoneNumber),error,callback)
+    TdApi.ChangePhoneNumber(phoneNumber,allowFlashCall,isCurrentPhoneNumber),onError,onSuccess)
 
 class TCreateTemporaryPassword(
     password: String,
     validFor: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CreateTemporaryPassword>
-    (TdApi.CreateTemporaryPassword(password,validFor),error,callback)
+    (TdApi.CreateTemporaryPassword(password,validFor),onError,onSuccess)
 
 class TGetPasswordState(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetPasswordState>
-    (TdApi.GetPasswordState(),error,callback)
+    (TdApi.GetPasswordState(),onError,onSuccess)
 
 class TGetTemporaryPasswordState(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetTemporaryPasswordState>
-    (TdApi.GetTemporaryPasswordState(),error,callback)
+    (TdApi.GetTemporaryPasswordState(),onError,onSuccess)
 
 class TRecoverAuthenticationPassword(
     recoveryCode: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RecoverAuthenticationPassword>
-    (TdApi.RecoverAuthenticationPassword(recoveryCode),error,callback)
+    (TdApi.RecoverAuthenticationPassword(recoveryCode),onError,onSuccess)
 
 class TRecoverPassword(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RequestAuthenticationPasswordRecovery>
-    (TdApi.RequestAuthenticationPasswordRecovery(),error,callback)
+    (TdApi.RequestAuthenticationPasswordRecovery(),onError,onSuccess)
 
 class TRequestPasswordRecovery(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RequestPasswordRecovery>
-    (TdApi.RequestPasswordRecovery(),error,callback)
+    (TdApi.RequestPasswordRecovery(),onError,onSuccess)
 
 class TSetPassword(
     oldPassword: String,
@@ -58,72 +59,72 @@ class TSetPassword(
     newHint: String,
     setRecoveryEmailAddress: Boolean,
     newRecoveryEmailAddress: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetPassword>
     (TdApi.SetPassword(oldPassword,newPassword,newHint,
-    setRecoveryEmailAddress,newRecoveryEmailAddress),error,callback)
+    setRecoveryEmailAddress,newRecoveryEmailAddress),onError,onSuccess)
 
 class TCheckChangePhoneNumberCode(
     code: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CheckChangePhoneNumberCode>
-    (TdApi.CheckChangePhoneNumberCode(code),error,callback)
+    (TdApi.CheckChangePhoneNumberCode(code),onError,onSuccess)
 
 
 class TCheckPhoneNumberConfirmationCode(
     code: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CheckPhoneNumberConfirmationCode>
-    (TdApi.CheckPhoneNumberConfirmationCode(code),error,callback)
+    (TdApi.CheckPhoneNumberConfirmationCode(code),onError,onSuccess)
 
 class TCheckPhoneNumberVerificationCode(
     code: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CheckPhoneNumberVerificationCode>
-    (TdApi.CheckPhoneNumberVerificationCode(code),error,callback)
+    (TdApi.CheckPhoneNumberVerificationCode(code),onError,onSuccess)
 
 class TResendChangePhoneNumberCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ResendChangePhoneNumberCode>
-    (TdApi.ResendChangePhoneNumberCode(),error,callback)
+    (TdApi.ResendChangePhoneNumberCode(),onError,onSuccess)
 
 class TResendPhoneNumberConfirmationCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ResendPhoneNumberConfirmationCode>
-    (TdApi.ResendPhoneNumberConfirmationCode(),error,callback)
+    (TdApi.ResendPhoneNumberConfirmationCode(),onError,onSuccess)
 
 class TResendPhoneNumberVerificationCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ResendPhoneNumberVerificationCode>
-    (TdApi.ResendPhoneNumberVerificationCode(),error,callback)
+    (TdApi.ResendPhoneNumberVerificationCode(),onError,onSuccess)
 
 class TSendPhoneNumberConfirmationCode(
     hash: String,
     phoneNumber: String,
     allowFlashCall: Boolean,
     isCurrentPhoneNumber: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendPhoneNumberConfirmationCode>
     (TdApi.SendPhoneNumberConfirmationCode(hash,phoneNumber,allowFlashCall,
-    isCurrentPhoneNumber),error,callback)
+    isCurrentPhoneNumber),onError,onSuccess)
 
 class TSendPhoneNumberVerificationCode(
     phoneNumber: String,
     allowFlashCall: Boolean,
     isCurrentPhoneNumber: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendPhoneNumberVerificationCode>
     (TdApi.SendPhoneNumberVerificationCode(phoneNumber,allowFlashCall,
-    isCurrentPhoneNumber),error,callback)
+    isCurrentPhoneNumber),onError,onSuccess)
 
 class TAnswerCallbackQuery(
     callbackQueryId: Long,
@@ -131,202 +132,202 @@ class TAnswerCallbackQuery(
     showAlert: Boolean,
     url: String,
     cacheTime: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AnswerCallbackQuery>
     (TdApi.AnswerCallbackQuery(callbackQueryId,text,
-    showAlert,url,cacheTime),error,callback)
+    showAlert,url,cacheTime),onError,onSuccess)
 
 class TCreateCall(
     userId: Int,
     protocol: TdApi.CallProtocol,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CreateCall>
-    (TdApi.CreateCall(userId,protocol),error,callback)
+    (TdApi.CreateCall(userId,protocol),onError,onSuccess)
 
 class TDiscardCall(
     callId: Int,
     isDisconnect: Boolean,
     duration: Int,
     connectionId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.DiscardCall>
     (TdApi.DiscardCall(callId,isDisconnect,
-    duration,connectionId),error,callback)
+    duration,connectionId),onError,onSuccess)
 
 class TGetCallbackQueryAnswer(
     chatId: Long,
     messageId: Long,
     payload: TdApi.CallbackQueryPayload,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetCallbackQueryAnswer>
-    (TdApi.GetCallbackQueryAnswer(chatId,messageId,payload),error,callback)
+    (TdApi.GetCallbackQueryAnswer(chatId,messageId,payload),onError,onSuccess)
 
 class TSendCallRating(
     callId: Int,
     rating: Int,
     comment: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendCallRating>
-    (TdApi.SendCallRating(callId,rating,comment),error,callback)
+    (TdApi.SendCallRating(callId,rating,comment),onError,onSuccess)
 
 class TTestCallBytes(
     x: ByteArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallBytes>
-    (TdApi.TestCallBytes(x),error,callback)
+    (TdApi.TestCallBytes(x),onError,onSuccess)
 
 class TTestCallEmpty(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallEmpty>
-    (TdApi.TestCallEmpty(),error,callback)
+    (TdApi.TestCallEmpty(),onError,onSuccess)
 
 class TTestCallString(
     x: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallString>
-    (TdApi.TestCallString(x),error,callback)
+    (TdApi.TestCallString(x),onError,onSuccess)
 
 
 class TTestCallVectorInt(
     x: IntArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallVectorInt>
-    (TdApi.TestCallVectorInt(x),error,callback)
+    (TdApi.TestCallVectorInt(x),onError,onSuccess)
 
 
 class TTestCallVectorIntObject(
     x: Array<TdApi.TestInt>,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallVectorIntObject>
-    (TdApi.TestCallVectorIntObject(x),error,callback)
+    (TdApi.TestCallVectorIntObject(x),onError,onSuccess)
 
 
 class TTestCallVectorString(
     x: Array<String>,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallVectorString>
-    (TdApi.TestCallVectorString(x),error,callback)
+    (TdApi.TestCallVectorString(x),onError,onSuccess)
 
 
 class TestCallVectorStringObject(
     x: Array<TdApi.TestString>,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.TestCallVectorStringObject>
-    (TdApi.TestCallVectorStringObject(x),error,callback)
+    (TdApi.TestCallVectorStringObject(x),onError,onSuccess)
 
 class TCheckAuthenticationCode(
     code: String? = null,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) :  TRequest<TdApi.CheckAuthenticationCode>(
     TdApi
         .CheckAuthenticationCode(
             code?:Session.myCode,
-            "",""),error,callback)
+            "",""),onError,onSuccess)
 
 class TCheckAuthenticationPassword(
     password: String? = null,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) :  TRequest<TdApi.CheckAuthenticationPassword>(
     TdApi
         .CheckAuthenticationPassword(
-            password?:Session.myPassword),error,callback)
+            password?:Session.myPassword),onError,onSuccess)
 
 class TLogOut(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.LogOut>(TdApi.LogOut(),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.LogOut>(TdApi.LogOut(),onError,onSuccess)
 
 class TSetAuthenticationPhoneNumber(
     phone: String? = null,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetAuthenticationPhoneNumber>(
     TdApi
         .SetAuthenticationPhoneNumber(
             phone?: Session.myPhone,
-            false,true),error,callback)
+            false,true),onError,onSuccess)
 
 
 class TCheckEmailAddressVerificationCode(
     code: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CheckEmailAddressVerificationCode>
-    (TdApi.CheckEmailAddressVerificationCode(code),error,callback)
+    (TdApi.CheckEmailAddressVerificationCode(code),onError,onSuccess)
 
 class TCheckRecoveryEmailAddressCode(
     code: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.CheckRecoveryEmailAddressCode>
-    (TdApi.CheckRecoveryEmailAddressCode(code),error,callback)
+    (TdApi.CheckRecoveryEmailAddressCode(code),onError,onSuccess)
 
 class TGetRecoveryEmailAddress(
     password: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetRecoveryEmailAddress>
-    (TdApi.GetRecoveryEmailAddress(password),error,callback)
+    (TdApi.GetRecoveryEmailAddress(password),onError,onSuccess)
 
 class TResendEmailAddressVerificationCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ResendEmailAddressVerificationCode>
-    (TdApi.ResendEmailAddressVerificationCode(),error,callback)
+    (TdApi.ResendEmailAddressVerificationCode(),onError,onSuccess)
 
 class TResendRecoveryEmailAddressCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ResendRecoveryEmailAddressCode>
-    (TdApi.ResendRecoveryEmailAddressCode(),error,callback)
+    (TdApi.ResendRecoveryEmailAddressCode(),onError,onSuccess)
 
 class TSendEmailAddressVerificationCode(
     emailAddress: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendEmailAddressVerificationCode>
-    (TdApi.SendEmailAddressVerificationCode(emailAddress),error,callback)
+    (TdApi.SendEmailAddressVerificationCode(emailAddress),onError,onSuccess)
 
 class TSetRecoveryEmailAddress(
     password: String,
     newRecoveryEmailAddress: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetRecoveryEmailAddress>
-    (TdApi.SetRecoveryEmailAddress(password,newRecoveryEmailAddress),error,callback)
+    (TdApi.SetRecoveryEmailAddress(password,newRecoveryEmailAddress),onError,onSuccess)
 
 class TResendAuthenticationCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ResendAuthenticationCode>
-    (TdApi.ResendAuthenticationCode(),error,callback)
+    (TdApi.ResendAuthenticationCode(),onError,onSuccess)
 
 class TGetCountryCode(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetCountryCode>
-    (TdApi.GetCountryCode(),error,callback)
+    (TdApi.GetCountryCode(),onError,onSuccess)
 
 class TGetUserFullInfo(
     userId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetUserFullInfo>
-    (TdApi.GetUserFullInfo(userId),error,callback)
+    (TdApi.GetUserFullInfo(userId),onError,onSuccess)
 
 class TSendPaymentForm(
     chatId: Long,
@@ -334,31 +335,31 @@ class TSendPaymentForm(
     orderInfoId: String,
     shippingOptionId: String,
     credentials: TdApi.InputCredentials,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendPaymentForm>
     (TdApi.SendPaymentForm(chatId,messageId,orderInfoId,
-    shippingOptionId,credentials),error,callback)
+    shippingOptionId,credentials),onError,onSuccess)
 
 class TSetAlarm(
     seconds: Double,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetAlarm>
-    (TdApi.SetAlarm(seconds),error,callback)
+    (TdApi.SetAlarm(seconds),onError,onSuccess)
 
 
 class TGetStorageStatisticsFast(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetStorageStatisticsFast>
-    (TdApi.GetStorageStatisticsFast(),error,callback)
+    (TdApi.GetStorageStatisticsFast(),onError,onSuccess)
 
 
 class TRegisterDevice(
     deviceToken: TdApi.DeviceToken,
     otherUserIds: IntArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RegisterDevice>
-    (TdApi.RegisterDevice(deviceToken,otherUserIds),error,callback)
+    (TdApi.RegisterDevice(deviceToken,otherUserIds),onError,onSuccess)

@@ -1,6 +1,7 @@
 package inc.brody.tapi.requests
 
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TAddProxy (
@@ -8,16 +9,16 @@ class TAddProxy (
     port: Int,
     enable: Boolean,
     type: TdApi.ProxyType,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddProxy>(
-    TdApi.AddProxy(server,port,enable,type),error,callback)
+    TdApi.AddProxy(server,port,enable,type),onError,onSuccess)
 
 class TDisableProxy (
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.DisableProxy>(
-    TdApi.DisableProxy(),error,callback)
+    TdApi.DisableProxy(),onError,onSuccess)
 
 class TEditProxy (
     proxyId: Int,
@@ -25,41 +26,41 @@ class TEditProxy (
     port: Int,
     enable: Boolean,
     type: TdApi.ProxyType,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EditProxy>(
-    TdApi.EditProxy(proxyId,server,port,enable,type),error,callback)
+    TdApi.EditProxy(proxyId,server,port,enable,type),onError,onSuccess)
 
 class TEnableProxy (
     proxyId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.EnableProxy>(
-    TdApi.EnableProxy(proxyId),error,callback)
+    TdApi.EnableProxy(proxyId),onError,onSuccess)
 
 class TGetProxyLink (
     proxyId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetProxyLink>(
-    TdApi.GetProxyLink(proxyId),error,callback)
+    TdApi.GetProxyLink(proxyId),onError,onSuccess)
 
 class TPingProxy (
     proxyId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.PingProxy>(
-    TdApi.PingProxy(proxyId),error,callback)
+    TdApi.PingProxy(proxyId),onError,onSuccess)
 
 class TRemoveProxy (
     proxyId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RemoveProxy>(
-    TdApi.RemoveProxy(proxyId),error,callback)
+    TdApi.RemoveProxy(proxyId),onError,onSuccess)
 
 class TGetProxies(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetProxies>(
-    TdApi.GetProxies(),error,callback)
+    TdApi.GetProxies(),onError,onSuccess)

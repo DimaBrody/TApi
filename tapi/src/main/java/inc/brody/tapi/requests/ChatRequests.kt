@@ -1,148 +1,149 @@
 package inc.brody.tapi.requests
 
 import inc.brody.tapi.utils.responses.ErrorResponse
+import inc.brody.tapi.utils.responses.TelegramErrorResponse
 import org.drinkless.td.libcore.telegram.TdApi
 
 class TAddChatMember (
     chatId: Long,
     userId: Int,
     forwardLimit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddChatMember>(
-    TdApi.AddChatMember(chatId,userId,forwardLimit),error,callback)
+    TdApi.AddChatMember(chatId,userId,forwardLimit),onError,onSuccess)
 
 class TAddChatMembers (
     chatId: Long,
     userIds: IntArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddChatMembers>(
-    TdApi.AddChatMembers(chatId,userIds),error,callback)
+    TdApi.AddChatMembers(chatId,userIds),onError,onSuccess)
 
 class TAddRecentlyFoundChat (
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.AddRecentlyFoundChat>(
-    TdApi.AddRecentlyFoundChat(chatId),error,callback)
+    TdApi.AddRecentlyFoundChat(chatId),onError,onSuccess)
 
 class TGetChat(
     chatId: Long = 0L,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) :  TRequest<TdApi.GetChat>(TdApi.GetChat(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) :  TRequest<TdApi.GetChat>(TdApi.GetChat(chatId),onError,onSuccess)
 
 class TGetChats(
     offsetOrder: Long = Long.MAX_VALUE,
     offsetChatId: Long = Long.MAX_VALUE,
     limit: Int = 30,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChats>(TdApi.GetChats(offsetOrder,offsetChatId,limit),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChats>(TdApi.GetChats(offsetOrder,offsetChatId,limit),onError,onSuccess)
 
 class TCheckChatInviteLink(
     inviteLink: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CheckChatInviteLink>(TdApi.CheckChatInviteLink(inviteLink),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CheckChatInviteLink>(TdApi.CheckChatInviteLink(inviteLink),onError,onSuccess)
 
 class TCheckChatUsername(
     chatId: Long,
     username: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CheckChatUsername>(TdApi.CheckChatUsername(chatId,username),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CheckChatUsername>(TdApi.CheckChatUsername(chatId,username),onError,onSuccess)
 
 class TClearAllDraftMessages(
     excludeSecretChats: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.ClearAllDraftMessages>(TdApi.ClearAllDraftMessages(excludeSecretChats),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.ClearAllDraftMessages>(TdApi.ClearAllDraftMessages(excludeSecretChats),onError,onSuccess)
 
 
 class TCloseSecretChat(
     secretChatId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CloseSecretChat>(TdApi.CloseSecretChat(secretChatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CloseSecretChat>(TdApi.CloseSecretChat(secretChatId),onError,onSuccess)
 
 class TCreateBasicGroupChat(
     basicGroupId: Int,
     force: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreateBasicGroupChat>(TdApi.CreateBasicGroupChat(basicGroupId,force),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreateBasicGroupChat>(TdApi.CreateBasicGroupChat(basicGroupId,force),onError,onSuccess)
 
 class TCreateNewBasicGroupChat(
     userIds: IntArray,
     title: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreateNewBasicGroupChat>(TdApi.CreateNewBasicGroupChat(userIds,title),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreateNewBasicGroupChat>(TdApi.CreateNewBasicGroupChat(userIds,title),onError,onSuccess)
 
 class TCreateNewSecretChat(
     userId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreateNewSecretChat>(TdApi.CreateNewSecretChat(userId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreateNewSecretChat>(TdApi.CreateNewSecretChat(userId),onError,onSuccess)
 
 class TCreateNewSupergroupChat(
     title: String,
     isChannel: Boolean,
     description: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreateNewSupergroupChat>(TdApi.CreateNewSupergroupChat(title,isChannel,description),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreateNewSupergroupChat>(TdApi.CreateNewSupergroupChat(title,isChannel,description),onError,onSuccess)
 
 class TCreateSecretChat(
     secretChatId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreateSecretChat>(TdApi.CreateSecretChat(secretChatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreateSecretChat>(TdApi.CreateSecretChat(secretChatId),onError,onSuccess)
 
 class TCreateSupergroupChat(
     supergroupId: Int,
     force: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreateSupergroupChat>(TdApi.CreateSupergroupChat(supergroupId,force),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreateSupergroupChat>(TdApi.CreateSupergroupChat(supergroupId,force),onError,onSuccess)
 
 
 class TDeleteChatHistory(
     chatId: Long,
     removeFromChatList: Boolean,
     revoke: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.DeleteChatHistory>(TdApi.DeleteChatHistory(chatId,removeFromChatList,revoke),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.DeleteChatHistory>(TdApi.DeleteChatHistory(chatId,removeFromChatList,revoke),onError,onSuccess)
 
 
 class TCloseChat(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CloseChat>(TdApi.CloseChat(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CloseChat>(TdApi.CloseChat(chatId),onError,onSuccess)
 
 class TDeleteSupergroup(
     supergroupId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.DeleteSupergroup>(TdApi.DeleteSupergroup(supergroupId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.DeleteSupergroup>(TdApi.DeleteSupergroup(supergroupId),onError,onSuccess)
 
 
 class TGenerateChatInviteLink(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GenerateChatInviteLink>(TdApi.GenerateChatInviteLink(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GenerateChatInviteLink>(TdApi.GenerateChatInviteLink(chatId),onError,onSuccess)
 
 
 class TGetChatAdministrators(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatAdministrators>(TdApi.GetChatAdministrators(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatAdministrators>(TdApi.GetChatAdministrators(chatId),onError,onSuccess)
 
 
 class TGetChatEventLog(
@@ -152,9 +153,9 @@ class TGetChatEventLog(
     limit: Int,
     filters: TdApi.ChatEventLogFilters,
     userIds: IntArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatEventLog>(TdApi.GetChatEventLog(chatId,query,fromEventId,limit,filters,userIds),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatEventLog>(TdApi.GetChatEventLog(chatId,query,fromEventId,limit,filters,userIds),onError,onSuccess)
 
 class TGetChatHistory(
     chatId: Long,
@@ -162,202 +163,202 @@ class TGetChatHistory(
     offset: Int,
     limit: Int,
     onlyLocal: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatHistory>(TdApi.GetChatHistory(chatId,fromMessageId,offset,limit,onlyLocal),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatHistory>(TdApi.GetChatHistory(chatId,fromMessageId,offset,limit,onlyLocal),onError,onSuccess)
 
 
 class TGetChatMember(
     chatId: Long,
     userId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatMember>(TdApi.GetChatMember(chatId,userId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatMember>(TdApi.GetChatMember(chatId,userId),onError,onSuccess)
 
 
 class TGetChatNotificationSettingsExceptions(
     scope: TdApi.NotificationSettingsScope,
     compareSound: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatNotificationSettingsExceptions>(TdApi.GetChatNotificationSettingsExceptions(scope,compareSound),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatNotificationSettingsExceptions>(TdApi.GetChatNotificationSettingsExceptions(scope,compareSound),onError,onSuccess)
 
 class TGetChatPinnedMessage(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatPinnedMessage>(TdApi.GetChatPinnedMessage(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatPinnedMessage>(TdApi.GetChatPinnedMessage(chatId),onError,onSuccess)
 
 class TGetChatReportSpamState(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatReportSpamState>(TdApi.GetChatReportSpamState(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatReportSpamState>(TdApi.GetChatReportSpamState(chatId),onError,onSuccess)
 
 class TGetChatStatisticsUrl(
     chatId: Long,
     parameters: String,
     isDark: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetChatStatisticsUrl>(TdApi.GetChatStatisticsUrl(chatId,parameters,isDark),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetChatStatisticsUrl>(TdApi.GetChatStatisticsUrl(chatId,parameters,isDark),onError,onSuccess)
 
 class TGetCreatedPublicChats(
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetCreatedPublicChats>(TdApi.GetCreatedPublicChats(),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetCreatedPublicChats>(TdApi.GetCreatedPublicChats(),onError,onSuccess)
 
 class TGetChatMessageCount(
     userId: Int,
     force: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.CreatePrivateChat>(TdApi.CreatePrivateChat(userId,force),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.CreatePrivateChat>(TdApi.CreatePrivateChat(userId,force),onError,onSuccess)
 
 
 
 class TUpgradeBasicGroupChatToSupergroupChat(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.UpgradeBasicGroupChatToSupergroupChat>(TdApi.UpgradeBasicGroupChatToSupergroupChat(
-    chatId),error,callback)
+    chatId),onError,onSuccess)
 
 class TUnpinChatMessage(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.UnpinChatMessage>(TdApi.UnpinChatMessage(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.UnpinChatMessage>(TdApi.UnpinChatMessage(chatId),onError,onSuccess)
 
 class TToggleChatIsMarkedAsUnread(
     chatId: Long,
     isMarkedAsUnread: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleChatIsMarkedAsUnread>(
-    TdApi.ToggleChatIsMarkedAsUnread(chatId,isMarkedAsUnread),error,callback)
+    TdApi.ToggleChatIsMarkedAsUnread(chatId,isMarkedAsUnread),onError,onSuccess)
 
 class TToggleChatDefaultDisableNotification(
     chatId: Long,
     defaultDisableNotification: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleChatDefaultDisableNotification>(TdApi.ToggleChatDefaultDisableNotification
-    (chatId,defaultDisableNotification),error,callback)
+    (chatId,defaultDisableNotification),onError,onSuccess)
 
 class TSetPinnedChats(
     chatIds: LongArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetPinnedChats>(TdApi.SetPinnedChats(chatIds),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetPinnedChats>(TdApi.SetPinnedChats(chatIds),onError,onSuccess)
 
 class TSetChatTitle(
     chatId: Long,
     title: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetChatTitle>(TdApi.SetChatTitle(chatId,title),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetChatTitle>(TdApi.SetChatTitle(chatId,title),onError,onSuccess)
 
 
 
 class TSetChatNotificationSettings(
     chatId: Long,
     notificationSettings: TdApi.ChatNotificationSettings,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetChatNotificationSettings>(
-    TdApi.SetChatNotificationSettings(chatId,notificationSettings),error,callback)
+    TdApi.SetChatNotificationSettings(chatId,notificationSettings),onError,onSuccess)
 
 class TSetChatMemberStatus(
     chatId: Long,
     userId: Int,
     status: TdApi.ChatMemberStatus,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetChatMemberStatus>(TdApi.SetChatMemberStatus(chatId,userId,status),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetChatMemberStatus>(TdApi.SetChatMemberStatus(chatId,userId,status),onError,onSuccess)
 
 class TSetChatDraftMessage(
     chatId: Long,
     draftMessage: TdApi.DraftMessage,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetChatDraftMessage>(TdApi.SetChatDraftMessage(chatId,draftMessage),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetChatDraftMessage>(TdApi.SetChatDraftMessage(chatId,draftMessage),onError,onSuccess)
 
 
 class TSetChatClientData(
     chatId: Long,
     clientData: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetChatClientData>(TdApi.SetChatClientData(chatId,clientData),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetChatClientData>(TdApi.SetChatClientData(chatId,clientData),onError,onSuccess)
 
 
 
 class TSendChatSetTtlMessage(
     chatId: Long,
     ttl: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendChatSetTtlMessage>(TdApi.SendChatSetTtlMessage(
-    chatId,ttl),error,callback)
+    chatId,ttl),onError,onSuccess)
 
 
 
 class TSendChatScreenshotTakenNotification(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SendChatScreenshotTakenNotification>(
-    TdApi.SendChatScreenshotTakenNotification(chatId),error,callback)
+    TdApi.SendChatScreenshotTakenNotification(chatId),onError,onSuccess)
 
 
 
 class TSendChatAction(
     chatId: Long,
     action: TdApi.ChatAction,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SendChatAction>(TdApi.SendChatAction(chatId,action),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SendChatAction>(TdApi.SendChatAction(chatId,action),onError,onSuccess)
 
 
 
 class TSearchPublicChats(
     query: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SearchPublicChats>(TdApi.SearchPublicChats(query),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SearchPublicChats>(TdApi.SearchPublicChats(query),onError,onSuccess)
 
 
 class TSearchPublicChat(
     username: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SearchPublicChat>(TdApi.SearchPublicChat(username),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SearchPublicChat>(TdApi.SearchPublicChat(username),onError,onSuccess)
 
 
 class TSearchChatsOnServer(
     query: String,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SearchChatsOnServer>(TdApi.SearchChatsOnServer(query,limit),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SearchChatsOnServer>(TdApi.SearchChatsOnServer(query,limit),onError,onSuccess)
 
 
 class TSearchChats(
     query: String,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SearchChats>(TdApi.SearchChats(query,limit),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SearchChats>(TdApi.SearchChats(query,limit),onError,onSuccess)
 
 
 class TSearchChatRecentLocationMessages(
     chatId: Long,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SearchChatRecentLocationMessages>(TdApi.
-    SearchChatRecentLocationMessages(chatId,limit),error,callback)
+    SearchChatRecentLocationMessages(chatId,limit),onError,onSuccess)
 
 class TSearchChatMessages(
     chatId: Long,
@@ -367,76 +368,76 @@ class TSearchChatMessages(
     offset: Int,
     limit: Int,
     filter: TdApi.SearchMessagesFilter,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SearchChatMessages>(TdApi.SearchChatMessages
-    (chatId,query,senderUserId,fromMessageId,offset,limit,filter),error,callback)
+    (chatId,query,senderUserId,fromMessageId,offset,limit,filter),onError,onSuccess)
 
 class TSearchChatMembers(
     chatId: Long,
     query: String,
     limit: Int,
     filter: TdApi.ChatMembersFilter,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SearchChatMembers>(TdApi.SearchChatMembers(chatId,query,limit,filter),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SearchChatMembers>(TdApi.SearchChatMembers(chatId,query,limit,filter),onError,onSuccess)
 
 class TReportSupergroupSpam(
     supergroupId: Int,
     userId: Int,
     messageIds: LongArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.ReportSupergroupSpam>(TdApi.ReportSupergroupSpam(supergroupId,userId,messageIds),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.ReportSupergroupSpam>(TdApi.ReportSupergroupSpam(supergroupId,userId,messageIds),onError,onSuccess)
 
 class TReportChat(
     chatId: Long,
     reason: TdApi.ChatReportReason,
     messageIds: LongArray,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.ReportChat>(TdApi.ReportChat(chatId,reason,messageIds),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.ReportChat>(TdApi.ReportChat(chatId,reason,messageIds),onError,onSuccess)
 
 class TRemoveRecentlyFoundChat(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RemoveRecentlyFoundChat>(TdApi.RemoveRecentlyFoundChat
-    (chatId),error,callback)
+    (chatId),onError,onSuccess)
 
 class TOpenChat(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.OpenChat>(TdApi.OpenChat(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.OpenChat>(TdApi.OpenChat(chatId),onError,onSuccess)
 
 class TLeaveChat(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.LeaveChat>(TdApi.LeaveChat(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.LeaveChat>(TdApi.LeaveChat(chatId),onError,onSuccess)
 
 class TJoinChatByInviteLink(
     inviteLink: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.JoinChatByInviteLink>
-    (TdApi.JoinChatByInviteLink(inviteLink),error,callback)
+    (TdApi.JoinChatByInviteLink(inviteLink),onError,onSuccess)
 
 
 class TJoinChat(
     chatId: Long,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.JoinChat>(TdApi.JoinChat(chatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.JoinChat>(TdApi.JoinChat(chatId),onError,onSuccess)
 
 
 class TGetTopChats(
     category: TdApi.TopChatCategory,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetTopChats>(TdApi.GetTopChats(category,limit),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetTopChats>(TdApi.GetTopChats(category,limit),onError,onSuccess)
 
 
 class TGetSupergroupMembers(
@@ -444,109 +445,109 @@ class TGetSupergroupMembers(
     filter: TdApi.SupergroupMembersFilter,
     offset: Int,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetSupergroupMembers>(TdApi.GetSupergroupMembers(supergroupId,filter,offset,limit),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetSupergroupMembers>(TdApi.GetSupergroupMembers(supergroupId,filter,offset,limit),onError,onSuccess)
 
 
 class TGetSupergroupFullInfo(
     supergroupId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetSupergroupFullInfo>(TdApi.GetSupergroupFullInfo(supergroupId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetSupergroupFullInfo>(TdApi.GetSupergroupFullInfo(supergroupId),onError,onSuccess)
 
 
 class TGetSupergroup(
     supergroupId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetSupergroup>(TdApi.GetSupergroup(supergroupId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetSupergroup>(TdApi.GetSupergroup(supergroupId),onError,onSuccess)
 
 
 class TGetSecretChat(
     secretChatId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.GetSecretChat>(TdApi.GetSecretChat(secretChatId),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.GetSecretChat>(TdApi.GetSecretChat(secretChatId),onError,onSuccess)
 
 
 class TGetBasicGroup(
     basicGroupId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetBasicGroup>
-    (TdApi.GetBasicGroup(basicGroupId),error,callback)
+    (TdApi.GetBasicGroup(basicGroupId),onError,onSuccess)
 
 class TGetBasicGroupFullInfo(
     basicGroupId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetBasicGroupFullInfo>
-    (TdApi.GetBasicGroupFullInfo(basicGroupId),error,callback)
+    (TdApi.GetBasicGroupFullInfo(basicGroupId),onError,onSuccess)
 
 class TGetGroupsInCommon(
     userId: Int,
     offsetChatId: Long,
     limit: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.GetGroupsInCommon>
-    (TdApi.GetGroupsInCommon(userId,offsetChatId,limit),error,callback)
+    (TdApi.GetGroupsInCommon(userId,offsetChatId,limit),onError,onSuccess)
 
 class TRemoveNotificationGroup(
     notificationGroupId: Int,
     maxNotificationId: Int,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.RemoveNotificationGroup>
-    (TdApi.RemoveNotificationGroup(notificationGroupId,maxNotificationId),error,callback)
+    (TdApi.RemoveNotificationGroup(notificationGroupId,maxNotificationId),onError,onSuccess)
 
 class TSetSupergroupDescription(
     supergroupId: Int,
     description: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetSupergroupDescription>
-    (TdApi.SetSupergroupDescription(supergroupId,description),error,callback)
+    (TdApi.SetSupergroupDescription(supergroupId,description),onError,onSuccess)
 
 class TSetSupergroupUsername(
     supergroupId: Int,
     username: String,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.SetSupergroupUsername>
-    (TdApi.SetSupergroupUsername(supergroupId,username),error,callback)
+    (TdApi.SetSupergroupUsername(supergroupId,username),onError,onSuccess)
 
 class TToggleBasicGroupAdministrators(
     basicGroupId: Int,
     everyoneIsAdministrator : Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleBasicGroupAdministrators>
-    (TdApi.ToggleBasicGroupAdministrators(basicGroupId,everyoneIsAdministrator),error,callback)
+    (TdApi.ToggleBasicGroupAdministrators(basicGroupId,everyoneIsAdministrator),onError,onSuccess)
 
 class TToggleSupergroupInvites(
     supergroupId: Int,
     anyoneCanInvite: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleSupergroupInvites>
-    (TdApi.ToggleSupergroupInvites(supergroupId,anyoneCanInvite),error,callback)
+    (TdApi.ToggleSupergroupInvites(supergroupId,anyoneCanInvite),onError,onSuccess)
 
 class TToggleSupergroupIsAllHistoryAvailable(
     supergroupId: Int,
     isAllHistoryAvailable: Boolean,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
 ) : TRequest<TdApi.ToggleSupergroupIsAllHistoryAvailable>
-    (TdApi.ToggleSupergroupIsAllHistoryAvailable(supergroupId,isAllHistoryAvailable),error,callback)
+    (TdApi.ToggleSupergroupIsAllHistoryAvailable(supergroupId,isAllHistoryAvailable),onError,onSuccess)
 
 class TSetChatPhoto(
     chatId: Long,
     photo: TdApi.InputFile,
-    error: ((ErrorResponse)->Unit)? = null,
-    callback: ((TdApi.Object?)->Unit)? = null
-) : TRequest<TdApi.SetChatPhoto>(TdApi.SetChatPhoto(chatId,photo),error,callback)
+    onError: ((TelegramErrorResponse)->Unit)? = null,
+    onSuccess: ((TdApi.Object?)->Unit)? = null
+) : TRequest<TdApi.SetChatPhoto>(TdApi.SetChatPhoto(chatId,photo),onError,onSuccess)
 
 
 
