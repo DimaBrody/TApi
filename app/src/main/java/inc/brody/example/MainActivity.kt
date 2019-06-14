@@ -55,6 +55,6 @@ class MainActivity : AppCompatActivity() {
                     Log.d(TAG,telegramApi.authState.error.toString())
                 }
             }
-        }
+        }   
     }
 }
