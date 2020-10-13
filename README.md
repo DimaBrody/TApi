@@ -2,7 +2,7 @@
 
 [![](https://jitpack.io/v/DimaBrody/TApi.svg?style=flat-square)](https://jitpack.io/#DimaBrody/TApi/1.0.3)
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1024px-Telegram_logo.svg.png" alt="Drawing" width="200" height="200"/> 
+<img src="https://image.flaticon.com/icons/png/512/2111/2111644.png" alt="Drawing" width="200" height="200"/> 
 
 This library allows you to use both official telegram API (libtd) and helper functions and extensions of it. You can write a code for Telegram request in a single row. See the short documentation below to get into the spirit of things.
 
